@@ -20,3 +20,4 @@ _backup/
 .idea/
 .DS_Store
 Thumbs.db
+_gen_icons.py
