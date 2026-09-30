@@ -33,6 +33,13 @@ Set-Content -LiteralPath $genPath -Value $gen -Encoding UTF8
 & $py -X utf8 $genPath $ico $assets
 if ($LASTEXITCODE -ne 0) { throw 'icon generation failed' }
 
+# 1b) engine dependency (pptxgenjs) must be present for the packaged app to render
+if (-not (Test-Path (Join-Path $proj 'engine\node_modules\pptxgenjs'))) {
+  Write-Host 'installing engine dependency (pptxgenjs)...'
+  Push-Location (Join-Path $proj 'engine')
+  npm install pptxgenjs --no-audit --no-fund
+  Pop-Location
+}
 # 2) build onedir (fast startup, per doc 07) windowed GUI exe
 & $pyi --noconfirm --clean --windowed --log-level WARN `
   --name 'PPT渲染台' `
