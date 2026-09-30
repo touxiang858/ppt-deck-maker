@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# 打包产物（用 Releases 分发，不进仓库）
+dist/
+build/
+*.spec
+
+# 引擎依赖（npm install 生成）
+engine/node_modules/
+
+# 运行产物
+输出/
+_backup/
+*.pptx
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
